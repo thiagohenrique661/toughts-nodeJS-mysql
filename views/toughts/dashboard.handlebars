@@ -1,0 +1,27 @@
+<div class="dashboard">
+    <div class="title-container">
+        <h2>Dashboard</h2>
+        <a href="/toughts/add" class="btn">Create Tought</a>
+    </div>
+    <h3>Your toughts</h3>
+    <ul>
+        {{#each toughts}}
+        <li>
+            <span class="label">{{this.title}}</span>
+            <span class="actions">
+                <a href="/toughts/edit/{{this.id}}" class="btn">Update</a>
+                <form action="/toughts/remove" method="POST">
+                    <input type="hidden" name="id" value="{{this.id}}">
+                    <input type="submit" value="Delete" class="btn">
+                </form>
+            </span>
+        </li>
+        {{/each}}
+    </ul>
+
+    {{#if empyToughts}}
+    <p>No have your toughts: 
+        <a href="/toughts/add">CREATE HERE</a>
+    </p>
+    {{/if}}
+</div>
